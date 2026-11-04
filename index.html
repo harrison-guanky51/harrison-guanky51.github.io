@@ -1,0 +1,1301 @@
+<title>GoBoko Energy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+
+<style>
+  /* GoBoko — college energy brand, Texas State Bobcat spirit
+     Maroon + gold heritage meets electric energy palette */
+  :root {
+    --bg: #0a0a14;
+    --bg-raised: #12122a;
+    --bg-card: #161636;
+    --fg: #f0ede8;
+    --fg-muted: #8a8aaa;
+    --navy: #1a1a8c;
+    --purple: #3c2d96;
+    --cyan: #4dd4f0;
+    --yellow: #f5f054;
+    --gold: #f5f054;
+    --gold-soft: rgba(245, 240, 84, 0.10);
+    --cyan-soft: rgba(77, 212, 240, 0.10);
+    --display: 'Archivo Black', Impact, sans-serif;
+    --body: 'DM Sans', system-ui, sans-serif;
+    --r: 14px;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f4f4f8;
+      --bg-raised: #ffffff;
+      --bg-card: #ffffff;
+      --fg: #0a0a14;
+      --fg-muted: #55557a;
+      --navy: #1a1a8c;
+      --purple: #3c2d96;
+      --cyan: #1a9ab8;
+      --yellow: #c4b800;
+      --gold: #c4b800;
+      --gold-soft: rgba(196, 184, 0, 0.08);
+      --cyan-soft: rgba(26, 154, 184, 0.08);
+      color-scheme: light;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f4f4f8;
+    --bg-raised: #ffffff;
+    --bg-card: #ffffff;
+    --fg: #0a0a14;
+    --fg-muted: #55557a;
+    --navy: #1a1a8c;
+    --purple: #3c2d96;
+    --cyan: #1a9ab8;
+    --yellow: #c4b800;
+    --gold: #c4b800;
+    --gold-soft: rgba(196, 184, 0, 0.08);
+    --cyan-soft: rgba(26, 154, 184, 0.08);
+    color-scheme: light;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    line-height: 1.65;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--bg);
+  }
+
+  .wrap { max-width: 1060px; margin: 0 auto; }
+
+  a { color: inherit; }
+
+  /* ========== NAV ========== */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+
+  .brand {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  .brand .go { color: var(--gold); }
+  .brand .boko { color: var(--fg); }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .socials a {
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    border-radius: 8px;
+    background: var(--bg-raised);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+
+  .socials a:hover { background: var(--gold-soft); }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 72px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-text .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .hero-text h1 {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 .gold { color: var(--gold); }
+
+  .hero-text p {
+    color: var(--fg-muted);
+    font-size: 1.05rem;
+    max-width: 420px;
+    margin-bottom: 32px;
+  }
+
+  .hero-visual {
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .can-display {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(145deg, #1a1a8c, #3c2d96);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(26, 26, 140, 0.45);
+  }
+
+  .can-display .can-logo {
+    font-family: var(--display);
+    font-size: 3.2rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .can-display .can-logo .can-go { color: #f5f054; }
+
+  .can-display .can-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .can-display .can-tagline {
+    font-family: var(--display);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: #4dd4f0;
+    margin-top: 8px;
+  }
+
+  .can-display::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    border: 1px solid rgba(77, 212, 240, 0.25);
+    pointer-events: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-gold {
+    background: var(--gold);
+    color: #1a1520;
+    box-shadow: 0 0 32px var(--gold-soft), 0 4px 16px rgba(0,0,0,0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1.5px solid var(--fg-muted);
+  }
+
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ========== BANNER AD ========== */
+  .ad-banner {
+    text-align: center;
+    padding: 18px;
+    border: 2px dashed var(--fg-muted);
+    border-radius: var(--r);
+    margin: 48px 0;
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* ========== SECTION COMMON ========== */
+  .section { margin-bottom: 80px; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    color: var(--fg-muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  /* ========== PRODUCTS ========== */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-img {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .product-img.drink {
+    background: linear-gradient(135deg, #1a1a8c, #0a0a3c);
+  }
+
+  .product-img.gummy {
+    background: linear-gradient(135deg, #3c2d96, #1a1a5c);
+  }
+
+  .product-img svg {
+    width: 65%;
+    max-width: 220px;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+  }
+
+  .product-img .prod-label {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    color: var(--gold);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .product-body {
+    padding: 24px;
+  }
+
+  .product-body h3 {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .product-body .desc {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    margin-bottom: 20px;
+  }
+
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+  }
+
+  .price-table th {
+    text-align: left;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gold-soft);
+  }
+
+  .price-table th:not(:first-child) { text-align: right; }
+
+  .price-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gold-soft);
+  }
+
+  .price-table td:not(:first-child) {
+    text-align: right;
+    color: var(--fg-muted);
+  }
+
+  .price-table td:nth-child(2) {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .price-table tr:last-child td { border-bottom: none; }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .testimonial {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .testimonial .quote-mark {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .testimonial blockquote {
+    font-size: 0.92rem;
+    font-style: italic;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .testimonial .attribution {
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    font-weight: 600;
+  }
+
+  .testimonial .attribution span {
+    color: var(--gold);
+  }
+
+  /* ========== ABOUT US ========== */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text { font-size: 0.95rem; color: var(--fg-muted); }
+  .about-text p + p { margin-top: 16px; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .team-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    margin: 0 auto 10px;
+    display: grid; place-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: var(--display);
+  }
+
+  .team-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .team-card .role {
+    font-size: 0.7rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ========== FAQ ========== */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 700px;
+  }
+
+  .faq-item {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+    border-radius: var(--r);
+  }
+
+  .faq-q .chevron {
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  .faq-item.open .chevron { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-a-inner {
+    padding: 0 24px 20px;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    background: var(--gold-soft);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    font-size: 1rem;
+  }
+
+  .contact-item h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .contact-item p {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--gold-soft);
+    background: var(--bg-card);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+
+  .contact-form .btn-gold {
+    align-self: flex-start;
+  }
+
+  /* ========== POLICIES ========== */
+  .policies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .policy-card {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    padding: 28px 24px;
+  }
+
+  .policy-card h3 {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .policy-card p {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--gold-soft);
+    padding: 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin-bottom: 24px;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--gold); }
+
+  .footer-links {
+    display: flex; gap: 24px; list-style: none;
+  }
+
+  .webmaster {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.72rem;
+  }
+
+  /* ========== VIDEO ========== */
+  .video-section {
+    text-align: center;
+  }
+
+  .video-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .video-wrap video {
+    width: 100%;
+    display: block;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; text-align: center; padding: 48px 0 32px; }
+    .hero-text p { margin-inline: auto; }
+    .hero-text .btn-row { justify-content: center; }
+    .can-display { max-width: 260px; }
+    .about-content { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .policies { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="brand"><span class="go">Go</span><span class="boko">Boko</span></a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="socials">
+      <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+      <a href="#" title="X / Twitter" aria-label="X">𝕏</a>
+      <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+      <a href="#" title="Facebook" aria-label="Facebook">f</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Fuel for Bobcats 🐾</div>
+      <h1>ENERGY MADE FOR <span class="gold">GAME DAY</span> AND EVERY DAY</h1>
+      <p>Born in San Marcos, built for students. Clean energy drinks and gummies to power through lectures, late nights, and everything in between.</p>
+      <div class="btn-row">
+        <a href="#products" class="btn btn-gold">Shop Products</a>
+        <a href="#about" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="can-display">
+        <div class="can-sub">Premium Energy</div>
+        <div class="can-logo"><span class="can-go">Go</span>Boko</div>
+        <div class="can-tagline">⚡ EAT EM UP ⚡</div>
+        <div class="can-sub">San Marcos, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER AD -->
+  <div class="ad-banner">📢&ensp; YOUR ADVERTISEMENT COULD BE HERE — <a href="mailto:Go@Boko.com" style="color:var(--gold);text-decoration:underline;">Contact us for sponsorship</a> &ensp;📢</div>
+
+  <!-- COMMERCIAL VIDEO -->
+  <section id="commercial" class="section">
+    <div class="section-tag">Watch</div>
+    <div class="section-title">THE GOBOKO COMMERCIAL</div>
+    <p class="section-sub">See what the hype is all about.</p>
+
+    <div class="video-wrap">
+      <video controls playsinline preload="metadata" poster="">
+        <source src="goboko-commercial.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="section-tag">Products</div>
+    <div class="section-title">PICK YOUR FUEL</div>
+    <p class="section-sub">Whether you need a can to crush or a gummy to grab between classes — we've got you covered.</p>
+
+    <div class="products-grid">
+      <!-- ENERGY DRINK -->
+      <div class="product-card">
+        <div class="product-img drink">
+          <svg viewBox="0 0 200 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Can body gradient with realistic cylinder shading -->
+              <linearGradient id="canBody" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#0c0c4a"/>
+                <stop offset="15%" stop-color="#1a1a8c"/>
+                <stop offset="40%" stop-color="#2e25a0"/>
+                <stop offset="55%" stop-color="#3c2d96"/>
+                <stop offset="75%" stop-color="#1a1a8c"/>
+                <stop offset="100%" stop-color="#08083a"/>
+              </linearGradient>
+              <!-- Metallic top/bottom -->
+              <linearGradient id="metalRim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e8e8f0"/>
+                <stop offset="30%" stop-color="#c8c8d4"/>
+                <stop offset="70%" stop-color="#98989c"/>
+                <stop offset="100%" stop-color="#787880"/>
+              </linearGradient>
+              <linearGradient id="metalTab" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d0d0d8"/>
+                <stop offset="50%" stop-color="#a8a8b0"/>
+                <stop offset="100%" stop-color="#909098"/>
+              </linearGradient>
+              <!-- Specular highlight -->
+              <linearGradient id="specular" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="40%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="50%" stop-color="rgba(255,255,255,0.12)"/>
+                <stop offset="55%" stop-color="rgba(255,255,255,0.06)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <!-- Edge shadow -->
+              <linearGradient id="edgeShadow" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(0,0,0,0.3)"/>
+                <stop offset="8%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="92%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0.25)"/>
+              </linearGradient>
+              <!-- Cyan glow -->
+              <filter id="cyanGlow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Yellow glow for paw -->
+              <filter id="yellowGlow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Drop shadow for can -->
+              <filter id="canShadow">
+                <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="rgba(0,0,20,0.5)"/>
+              </filter>
+              <!-- Elliptical clip for top -->
+              <clipPath id="topClip">
+                <ellipse cx="100" cy="46" rx="52" ry="8"/>
+              </clipPath>
+            </defs>
+
+            <g filter="url(#canShadow)">
+              <!-- Can body -->
+              <path d="M48,54 L48,300 Q48,314 100,314 Q152,314 152,300 L152,54 Q152,40 100,40 Q48,40 48,54 Z" fill="url(#canBody)"/>
+
+              <!-- Bottom ellipse -->
+              <ellipse cx="100" cy="306" rx="52" ry="10" fill="#0a0a3a" opacity="0.8"/>
+
+              <!-- Cyan accent bands -->
+              <rect x="48" y="100" width="104" height="3" fill="#4dd4f0" filter="url(#cyanGlow)" opacity="0.9"/>
+              <rect x="48" y="106" width="104" height="1" fill="#4dd4f0" opacity="0.4"/>
+              <rect x="48" y="240" width="104" height="3" fill="#4dd4f0" filter="url(#cyanGlow)" opacity="0.9"/>
+              <rect x="48" y="236" width="104" height="1" fill="#4dd4f0" opacity="0.4"/>
+
+              <!-- Label area background -->
+              <rect x="48" y="110" width="104" height="124" fill="rgba(0,0,0,0.15)"/>
+
+              <!-- Paw print - proper shape with cyan outline -->
+              <g filter="url(#yellowGlow)" transform="translate(100,158)">
+                <!-- Cyan outline layer -->
+                <ellipse cx="0" cy="8" rx="20" ry="17" fill="none" stroke="#4dd4f0" stroke-width="2.5" opacity="0.6"/>
+                <ellipse cx="-18" cy="-14" rx="10" ry="12" fill="none" stroke="#4dd4f0" stroke-width="2" opacity="0.5"/>
+                <ellipse cx="-2" cy="-22" rx="9" ry="11" fill="none" stroke="#4dd4f0" stroke-width="2" opacity="0.5"/>
+                <ellipse cx="16" cy="-16" rx="10" ry="12" fill="none" stroke="#4dd4f0" stroke-width="2" opacity="0.5"/>
+                <!-- Yellow fill -->
+                <ellipse cx="0" cy="8" rx="18" ry="15" fill="#f5f054"/>
+                <ellipse cx="-16" cy="-12" rx="9" ry="10.5" fill="#f5f054"/>
+                <ellipse cx="-1" cy="-20" rx="8" ry="9.5" fill="#f5f054"/>
+                <ellipse cx="14" cy="-14" rx="9" ry="10.5" fill="#f5f054"/>
+                <!-- Inner depth shadows -->
+                <ellipse cx="2" cy="12" rx="12" ry="8" fill="rgba(200,180,0,0.3)"/>
+              </g>
+
+              <!-- GO BOKO! text -->
+              <text x="100" y="206" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="#f5f054" letter-spacing="1.5" font-weight="900">GO BOKO!</text>
+              <!-- Subtle text shadow -->
+              <text x="100.5" y="206.5" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="rgba(0,0,0,0.3)" letter-spacing="1.5" font-weight="900">GO BOKO!</text>
+
+              <!-- PREMIUM ENERGY -->
+              <text x="100" y="118" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="rgba(255,255,255,0.5)" letter-spacing="4" font-weight="600">PREMIUM</text>
+              <text x="100" y="228" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#4dd4f0" letter-spacing="4.5" font-weight="700">E N E R G Y</text>
+
+              <!-- Volume text -->
+              <text x="100" y="280" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="6.5" fill="rgba(255,255,255,0.3)" letter-spacing="1.5">12 FL OZ (355mL)</text>
+
+              <!-- Specular highlight overlay -->
+              <path d="M48,54 L48,300 Q48,314 100,314 Q152,314 152,300 L152,54 Q152,40 100,40 Q48,40 48,54 Z" fill="url(#specular)"/>
+
+              <!-- Edge darkening -->
+              <path d="M48,54 L48,300 Q48,314 100,314 Q152,314 152,300 L152,54 Q152,40 100,40 Q48,40 48,54 Z" fill="url(#edgeShadow)"/>
+
+              <!-- Top rim -->
+              <ellipse cx="100" cy="46" rx="52" ry="10" fill="url(#metalRim)"/>
+              <ellipse cx="100" cy="44" rx="48" ry="7" fill="#787880"/>
+              <ellipse cx="100" cy="43" rx="44" ry="5.5" fill="#606068"/>
+
+              <!-- Pull tab -->
+              <g transform="translate(100,42)">
+                <ellipse cx="0" cy="0" rx="16" ry="4.5" fill="url(#metalTab)" stroke="#70707a" stroke-width="0.5"/>
+                <ellipse cx="0" cy="-1" rx="10" ry="2.5" fill="none" stroke="#888" stroke-width="0.8"/>
+                <rect x="-3" y="-6" width="6" height="6" rx="1.5" fill="url(#metalTab)" stroke="#808088" stroke-width="0.5"/>
+              </g>
+
+              <!-- Subtle top reflection -->
+              <ellipse cx="88" cy="44" rx="18" ry="3" fill="rgba(255,255,255,0.08)"/>
+            </g>
+          </svg>
+          <div class="prod-label">Best Seller</div>
+        </div>
+        <div class="product-body">
+          <h3>GoBoko Energy Drink</h3>
+          <p class="desc">Our flagship energy drink — a bold, crisp blend with natural caffeine, B-vitamins, and zero crash. Designed to keep Bobcats locked in from 8 AM lectures to late-night study sessions.</p>
+          <table class="price-table">
+            <thead>
+              <tr><th>Option</th><th>USD</th><th>EUR</th><th>MXN</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Single Can</td><td>$2.50</td><td>€2.30</td><td>$43.00</td></tr>
+              <tr><td>4‑Pack</td><td>$8.00</td><td>€7.40</td><td>$138.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ENERGY GUMMIES -->
+      <div class="product-card">
+        <div class="product-img gummy">
+          <svg viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Pouch body gradient with foil-like sheen -->
+              <linearGradient id="pouchBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2a1f7a"/>
+                <stop offset="25%" stop-color="#3c2d96"/>
+                <stop offset="50%" stop-color="#4a38a8"/>
+                <stop offset="75%" stop-color="#3c2d96"/>
+                <stop offset="100%" stop-color="#1a1566"/>
+              </linearGradient>
+              <!-- Foil shimmer -->
+              <linearGradient id="foilShimmer" x1="0" y1="0" x2="1" y2="0.5">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="30%" stop-color="rgba(255,255,255,0.06)"/>
+                <stop offset="50%" stop-color="rgba(255,255,255,0.12)"/>
+                <stop offset="70%" stop-color="rgba(255,255,255,0.04)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <!-- Seal gradient -->
+              <linearGradient id="sealGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5de4ff"/>
+                <stop offset="50%" stop-color="#4dd4f0"/>
+                <stop offset="100%" stop-color="#38b8d8"/>
+              </linearGradient>
+              <!-- Pouch shadow -->
+              <filter id="pouchShadow">
+                <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(0,0,20,0.4)"/>
+              </filter>
+              <!-- Gummy glow -->
+              <filter id="gummyGlow">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Yellow glow for paw on pouch -->
+              <filter id="yellowGlow2">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <g filter="url(#pouchShadow)">
+              <!-- Pouch body - stand-up pouch shape -->
+              <path d="M40,45 L40,240 Q40,268 70,270 L170,270 Q200,268 200,240 L200,45 Q200,35 190,32 L50,32 Q40,35 40,45 Z" fill="url(#pouchBody)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+
+              <!-- Bottom gusset fold line -->
+              <path d="M50,258 Q120,275 190,258" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
+              <path d="M55,252 Q120,265 185,252" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+              <!-- Top seal - ziplock style -->
+              <rect x="40" y="32" width="160" height="22" rx="2" fill="url(#sealGrad)"/>
+              <!-- Seal crimp lines -->
+              <line x1="45" y1="38" x2="195" y2="38" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+              <line x1="45" y1="42" x2="195" y2="42" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+              <line x1="45" y1="48" x2="195" y2="48" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+
+              <!-- Tear tab -->
+              <path d="M90,28 Q100,18 110,20 L130,20 Q140,18 150,28" fill="url(#sealGrad)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+              <!-- Tear notch -->
+              <polygon points="108,32 112,26 116,32" fill="#3c2d96" opacity="0.6"/>
+              <polygon points="124,32 128,26 132,32" fill="#3c2d96" opacity="0.6"/>
+
+              <!-- Cyan accent band -->
+              <rect x="40" y="70" width="160" height="2.5" fill="#4dd4f0" opacity="0.8"/>
+              <rect x="40" y="210" width="160" height="2.5" fill="#4dd4f0" opacity="0.8"/>
+
+              <!-- Label panel -->
+              <rect x="40" y="75" width="160" height="132" fill="rgba(0,0,0,0.12)"/>
+
+              <!-- Paw print with glow -->
+              <g filter="url(#yellowGlow2)" transform="translate(120,125)">
+                <!-- Cyan outline -->
+                <ellipse cx="0" cy="6" rx="18" ry="15" fill="none" stroke="#4dd4f0" stroke-width="2" opacity="0.5"/>
+                <ellipse cx="-16" cy="-12" rx="9" ry="10" fill="none" stroke="#4dd4f0" stroke-width="1.5" opacity="0.4"/>
+                <ellipse cx="0" cy="-18" rx="8" ry="9" fill="none" stroke="#4dd4f0" stroke-width="1.5" opacity="0.4"/>
+                <ellipse cx="14" cy="-13" rx="9" ry="10" fill="none" stroke="#4dd4f0" stroke-width="1.5" opacity="0.4"/>
+                <!-- Yellow fill -->
+                <ellipse cx="0" cy="6" rx="16" ry="13" fill="#f5f054"/>
+                <ellipse cx="-14" cy="-10" rx="8" ry="9" fill="#f5f054"/>
+                <ellipse cx="0" cy="-16" rx="7" ry="8" fill="#f5f054"/>
+                <ellipse cx="12" cy="-11" rx="8" ry="9" fill="#f5f054"/>
+                <!-- Depth shadow -->
+                <ellipse cx="1" cy="10" rx="10" ry="6" fill="rgba(200,180,0,0.25)"/>
+              </g>
+
+              <!-- GO BOKO! text -->
+              <text x="120" y="172" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="20" fill="#f5f054" letter-spacing="1.5" font-weight="900">GO BOKO!</text>
+              <text x="120.5" y="172.5" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="20" fill="rgba(0,0,0,0.25)" letter-spacing="1.5" font-weight="900">GO BOKO!</text>
+
+              <!-- ENERGY GUMMIES text -->
+              <text x="120" y="83" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="6.5" fill="rgba(255,255,255,0.5)" letter-spacing="3" font-weight="600">PREMIUM ENERGY</text>
+              <text x="120" y="198" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#4dd4f0" letter-spacing="3" font-weight="700">G U M M I E S</text>
+
+              <!-- Decorative gummy bear shapes -->
+              <g opacity="0.6">
+                <!-- Gummy bear 1 - bottom left -->
+                <g transform="translate(62,232) scale(0.7)" filter="url(#gummyGlow)">
+                  <ellipse cx="0" cy="0" rx="10" ry="8" fill="rgba(245,240,84,0.35)" stroke="#f5f054" stroke-width="1.2"/>
+                  <circle cx="-7" cy="-8" r="4" fill="rgba(245,240,84,0.3)" stroke="#f5f054" stroke-width="0.8"/>
+                  <circle cx="7" cy="-8" r="4" fill="rgba(245,240,84,0.3)" stroke="#f5f054" stroke-width="0.8"/>
+                </g>
+                <!-- Gummy bear 2 - bottom right -->
+                <g transform="translate(178,226) scale(0.65)" filter="url(#gummyGlow)">
+                  <ellipse cx="0" cy="0" rx="10" ry="8" fill="rgba(77,212,240,0.35)" stroke="#4dd4f0" stroke-width="1.2"/>
+                  <circle cx="-7" cy="-8" r="4" fill="rgba(77,212,240,0.3)" stroke="#4dd4f0" stroke-width="0.8"/>
+                  <circle cx="7" cy="-8" r="4" fill="rgba(77,212,240,0.3)" stroke="#4dd4f0" stroke-width="0.8"/>
+                </g>
+                <!-- Gummy bear 3 - mid left -->
+                <g transform="translate(55,160) scale(0.55)" filter="url(#gummyGlow)">
+                  <ellipse cx="0" cy="0" rx="10" ry="8" fill="rgba(77,212,240,0.3)" stroke="#4dd4f0" stroke-width="1"/>
+                  <circle cx="-7" cy="-8" r="4" fill="rgba(77,212,240,0.25)" stroke="#4dd4f0" stroke-width="0.7"/>
+                  <circle cx="7" cy="-8" r="4" fill="rgba(77,212,240,0.25)" stroke="#4dd4f0" stroke-width="0.7"/>
+                </g>
+                <!-- Gummy bear 4 - mid right -->
+                <g transform="translate(185,152) scale(0.5)" filter="url(#gummyGlow)">
+                  <ellipse cx="0" cy="0" rx="10" ry="8" fill="rgba(245,240,84,0.3)" stroke="#f5f054" stroke-width="1"/>
+                  <circle cx="-7" cy="-8" r="4" fill="rgba(245,240,84,0.25)" stroke="#f5f054" stroke-width="0.7"/>
+                  <circle cx="7" cy="-8" r="4" fill="rgba(245,240,84,0.25)" stroke="#f5f054" stroke-width="0.7"/>
+                </g>
+              </g>
+
+              <!-- Net weight -->
+              <text x="120" y="248" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="6" fill="rgba(255,255,255,0.25)" letter-spacing="1.5">30 GUMMIES · 150mg CAFFEINE</text>
+
+              <!-- Foil shimmer overlay -->
+              <path d="M40,45 L40,240 Q40,268 70,270 L170,270 Q200,268 200,240 L200,45 Q200,35 190,32 L50,32 Q40,35 40,45 Z" fill="url(#foilShimmer)"/>
+
+              <!-- Edge highlights -->
+              <path d="M40,45 L40,240 Q40,268 70,270" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <path d="M200,45 L200,240 Q200,268 170,270" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+            </g>
+          </svg>
+          <div class="prod-label">New</div>
+        </div>
+        <div class="product-body">
+          <h3>GoBoko Energy Gummies</h3>
+          <p class="desc">Can't finish a full drink? No problem. Our energy gummies pack the same boost into a sweet, chewable form. Toss a pack in your bag for on-the-go energy between classes and workouts.</p>
+          <table class="price-table">
+            <thead>
+              <tr><th>Option</th><th>USD</th><th>EUR</th><th>MXN</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Single Pack</td><td>$1.50</td><td>€1.38</td><td>$26.00</td></tr>
+              <tr><td>4‑Pack</td><td>$5.00</td><td>€4.60</td><td>$86.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section">
+    <div class="section-tag">Reviews</div>
+    <div class="section-title">WHAT BOBCATS ARE SAYING</div>
+    <p class="section-sub">Don't just take our word for it — hear from the students who fuel up with GoBoko.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>My favorite drink of all time! So flavorful and a great energy boost!</blockquote>
+        <div class="attribution"><span>Joshua Tree</span> — San Marcos, TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>I have trouble finishing energy drinks, so the gummy options at GoBoko are amazing. They are sweet, flavorful, and energizing. GoBoko has gotten me through all of my midterms!</blockquote>
+        <div class="attribution"><span>Samantha D.</span> — San Marcos, TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>From one Texas State student to another, trust me when I say GoBoko is the real deal. A variety of energy drinks that make for a great study buddy on pre-test nights. Go Boko!</blockquote>
+        <div class="attribution"><span>Bradley Sharpe</span> — San Marcos, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" class="section">
+    <div class="section-tag">About Us</div>
+    <div class="section-title">BORN IN BOBCAT COUNTRY</div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p>GoBoko was founded by a group of Texas State University students who were tired of the same old energy drinks that left them crashing before their next class. We wanted something better — something made for the student grind.</p>
+        <p>Named after the Bobcat battle cry, GoBoko is more than a brand. It's a rallying call for every student pulling late nights at Alkek, grinding through group projects, and showing up on game day. Our products are crafted to deliver clean, sustained energy without the sugar crash.</p>
+        <p>Based right here in San Marcos, Texas, we're proud to be built by Bobcats, for Bobcats — and for anyone who needs that extra push to get through the day.</p>
+      </div>
+      <div>
+        <div class="section-tag" style="margin-bottom:16px;">The Team</div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">MC</div>
+            <h4>Mackenzie C.</h4>
+            <div class="role">President</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">JI</div>
+            <h4>Javin I.</h4>
+            <div class="role">VP of Marketing</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">GO</div>
+            <h4>Galina O.</h4>
+            <div class="role">VP of Outreach</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">HC</div>
+            <h4>Harrison C.</h4>
+            <div class="role">VP of Technology</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">SC</div>
+            <h4>Sofia C.</h4>
+            <div class="role">VP of Products</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="section-tag">FAQ</div>
+    <div class="section-title">FREQUENTLY ASKED QUESTIONS</div>
+    <p class="section-sub">Everything you need to know about GoBoko products.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What flavors do GoBoko energy drinks come in?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Our energy drinks come in a signature GoBoko blend with a bold, crisp flavor. We're always experimenting with new flavors — follow us on social media to be the first to know about new drops.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How much caffeine is in a GoBoko drink?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Each GoBoko energy drink contains a moderate amount of caffeine comparable to other leading energy drinks, balanced with B-vitamins for smooth, sustained energy without the jitters.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Where can I buy GoBoko products?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">GoBoko products are available on our website and at select locations around the Texas State campus in San Marcos, TX. We're expanding to more locations soon!</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Are GoBoko gummies a good alternative to the drinks?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely! Our energy gummies deliver the same clean energy boost in a convenient, chewable form. They're perfect for people who prefer not to drink a full can or want something quick between classes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you ship internationally?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Currently, we ship within the United States. International shipping is on our roadmap — check back soon for updates. We list prices in USD, EUR, and MXN for our international community.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What is your return or refund policy?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">If you're not satisfied with your order, contact us within 30 days of purchase at Go@Boko.com. We'll work with you to make it right — whether that's a replacement or a refund.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-tag">Contact Us</div>
+    <div class="section-title">GET IN TOUCH</div>
+    <p class="section-sub">Have a question, partnership idea, or just want to say hey? We'd love to hear from you.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p>Go@Boko.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Mailing Address</h4>
+            <p>GoBoko Energy Co.<br>601 University Dr<br>San Marcos, TX 78666</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>(512) 555-BOKO</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon – Fri: 9 AM – 5 PM CT</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit();">
+        <input type="text" id="cf-fname" placeholder="First Name" required>
+        <input type="text" id="cf-lname" placeholder="Last Name" required>
+        <input type="email" id="cf-email" placeholder="Email Address" required>
+        <textarea id="cf-msg" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-gold" id="cf-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- POLICIES -->
+  <div class="policies">
+    <div class="policy-card">
+      <h3>🔒 Security Policy</h3>
+      <p>GoBoko is committed to protecting our customers' information. We use industry-standard encryption for all transactions and data storage. Your payment information is never stored on our servers and is processed through secure, PCI-compliant payment providers. We conduct regular security audits to ensure the safety of our systems.</p>
+    </div>
+    <div class="policy-card">
+      <h3>🛡️ Privacy Policy</h3>
+      <p>Your privacy matters to us. GoBoko collects only the information necessary to fulfill orders and improve your experience. We do not sell, trade, or share your personal information with third parties for marketing purposes. You may request to view, modify, or delete your personal data at any time by contacting us at Go@Boko.com.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2026 GoBoko Energy Co. &middot; San Marcos, TX</span>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="webmaster">
+      Technical issues? Email <a href="mailto:webmaster@goboko.com">webmaster@goboko.com</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        o.querySelector('.faq-a').style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Contact form mock submit
+  function handleSubmit() {
+    const btn = document.getElementById('cf-btn');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      document.querySelector('.contact-form').reset();
+    }, 2500);
+  }
+</script>
