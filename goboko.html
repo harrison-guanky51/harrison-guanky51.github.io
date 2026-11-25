@@ -1,0 +1,1209 @@
+<title>GoBoko Energy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+
+<style>
+  /* GoBoko — college energy brand, Texas State Bobcat spirit
+     Maroon + gold heritage meets electric energy palette */
+  :root {
+    --bg: #0a0a14;
+    --bg-raised: #12122a;
+    --bg-card: #161636;
+    --fg: #f0ede8;
+    --fg-muted: #8a8aaa;
+    --navy: #1a1a8c;
+    --purple: #3c2d96;
+    --cyan: #4dd4f0;
+    --yellow: #f5f054;
+    --gold: #f5f054;
+    --gold-soft: rgba(245, 240, 84, 0.10);
+    --cyan-soft: rgba(77, 212, 240, 0.10);
+    --display: 'Archivo Black', Impact, sans-serif;
+    --body: 'DM Sans', system-ui, sans-serif;
+    --r: 14px;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f4f4f8;
+      --bg-raised: #ffffff;
+      --bg-card: #ffffff;
+      --fg: #0a0a14;
+      --fg-muted: #55557a;
+      --navy: #1a1a8c;
+      --purple: #3c2d96;
+      --cyan: #1a9ab8;
+      --yellow: #c4b800;
+      --gold: #c4b800;
+      --gold-soft: rgba(196, 184, 0, 0.08);
+      --cyan-soft: rgba(26, 154, 184, 0.08);
+      color-scheme: light;
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #f4f4f8;
+    --bg-raised: #ffffff;
+    --bg-card: #ffffff;
+    --fg: #0a0a14;
+    --fg-muted: #55557a;
+    --navy: #1a1a8c;
+    --purple: #3c2d96;
+    --cyan: #1a9ab8;
+    --yellow: #c4b800;
+    --gold: #c4b800;
+    --gold-soft: rgba(196, 184, 0, 0.08);
+    --cyan-soft: rgba(26, 154, 184, 0.08);
+    color-scheme: light;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--body);
+    line-height: 1.65;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: var(--bg);
+  }
+
+  .wrap { max-width: 1060px; margin: 0 auto; }
+
+  a { color: inherit; }
+
+  /* ========== NAV ========== */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+  }
+
+  .brand {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  .brand .go { color: var(--gold); }
+  .brand .boko { color: var(--fg); }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .socials {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .socials a {
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    border-radius: 8px;
+    background: var(--bg-raised);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+
+  .socials a:hover { background: var(--gold-soft); }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: 72px 0 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-text .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .hero-text h1 {
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 .gold { color: var(--gold); }
+
+  .hero-text p {
+    color: var(--fg-muted);
+    font-size: 1.05rem;
+    max-width: 420px;
+    margin-bottom: 32px;
+  }
+
+  .hero-visual {
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .can-display {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(145deg, #1a1a8c, #3c2d96);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(26, 26, 140, 0.45);
+  }
+
+  .can-display .can-logo {
+    font-family: var(--display);
+    font-size: 3.2rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+  }
+
+  .can-display .can-logo .can-go { color: #f5f054; }
+
+  .can-display .can-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .can-display .can-tagline {
+    font-family: var(--display);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: #4dd4f0;
+    margin-top: 8px;
+  }
+
+  .can-display::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    border: 1px solid rgba(77, 212, 240, 0.25);
+    pointer-events: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-family: var(--body);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.2s;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-gold {
+    background: var(--gold);
+    color: #1a1520;
+    box-shadow: 0 0 32px var(--gold-soft), 0 4px 16px rgba(0,0,0,0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--fg);
+    border: 1.5px solid var(--fg-muted);
+  }
+
+  .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ========== BANNER AD ========== */
+  .ad-banner {
+    text-align: center;
+    padding: 18px;
+    border: 2px dashed var(--fg-muted);
+    border-radius: var(--r);
+    margin: 48px 0;
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  /* ========== SECTION COMMON ========== */
+  .section { margin-bottom: 80px; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 0.02em;
+    text-wrap: balance;
+    margin-bottom: 12px;
+  }
+
+  .section-sub {
+    color: var(--fg-muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  /* ========== PRODUCTS ========== */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .product-card:hover { transform: translateY(-4px); }
+
+  .product-img {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .product-img.drink {
+    background: linear-gradient(135deg, #1a3a5c, #0a1a2c);
+  }
+
+  .product-img.gummy {
+    background: linear-gradient(135deg, #2a1f3c, #0a0a1c);
+  }
+
+  .product-img svg {
+    width: 65%;
+    max-width: 220px;
+    height: auto;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+  }
+
+  .product-img .prod-label {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    color: var(--gold);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .product-body {
+    padding: 24px;
+  }
+
+  .product-body h3 {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .product-body .desc {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    margin-bottom: 20px;
+  }
+
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.85rem;
+  }
+
+  .price-table th {
+    text-align: left;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gold-soft);
+  }
+
+  .price-table th:not(:first-child) { text-align: right; }
+
+  .price-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gold-soft);
+  }
+
+  .price-table td:not(:first-child) {
+    text-align: right;
+    color: var(--fg-muted);
+  }
+
+  .price-table td:nth-child(2) {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .price-table tr:last-child td { border-bottom: none; }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .testimonial {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .testimonial .quote-mark {
+    font-family: var(--display);
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .testimonial blockquote {
+    font-size: 0.92rem;
+    font-style: italic;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .testimonial .attribution {
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    font-weight: 600;
+  }
+
+  .testimonial .attribution span {
+    color: var(--gold);
+  }
+
+  /* ========== ABOUT US ========== */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text { font-size: 0.95rem; color: var(--fg-muted); }
+  .about-text p + p { margin-top: 16px; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .team-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--gold-soft); overflow: hidden;
+    margin: 0 auto 10px;
+    display: grid; place-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    font-family: var(--display);
+  }
+
+  .team-card h4 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .team-card .role {
+    font-size: 0.7rem;
+    color: var(--fg-muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ========== FAQ ========== */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 700px;
+  }
+
+  .faq-item {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: -2px;
+    border-radius: var(--r);
+  }
+
+  .faq-q .chevron {
+    flex-shrink: 0;
+    transition: transform 0.25s;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  .faq-item.open .chevron { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-a-inner {
+    padding: 0 24px 20px;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item { display: flex; gap: 14px; align-items: flex-start; }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    background: var(--gold-soft);
+    border-radius: 10px;
+    display: grid; place-items: center;
+    font-size: 1rem;
+  }
+
+  .contact-item h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .contact-item p {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--gold-soft);
+    background: var(--bg-card);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+
+  .contact-form .btn-gold {
+    align-self: flex-start;
+  }
+
+  /* ========== POLICIES ========== */
+  .policies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .policy-card {
+    background: var(--bg-card);
+    border-radius: var(--r);
+    padding: 28px 24px;
+  }
+
+  .policy-card h3 {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .policy-card p {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    border-top: 1px solid var(--gold-soft);
+    padding: 32px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.78rem;
+    color: var(--fg-muted);
+    margin-bottom: 24px;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--fg-muted);
+    transition: color 0.2s;
+  }
+
+  footer a:hover { color: var(--gold); }
+
+  .footer-links {
+    display: flex; gap: 24px; list-style: none;
+  }
+
+  .webmaster {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.72rem;
+  }
+
+  /* ========== VIDEO ========== */
+  .video-section {
+    text-align: center;
+  }
+
+  .video-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .video-wrap video {
+    width: 100%;
+    display: block;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; text-align: center; padding: 48px 0 32px; }
+    .hero-text p { margin-inline: auto; }
+    .hero-text .btn-row { justify-content: center; }
+    .can-display { max-width: 260px; }
+    .about-content { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .policies { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<div class="wrap">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="brand"><span class="go">Go</span><span class="boko">Boko</span></a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="socials">
+      <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+      <a href="#" title="X / Twitter" aria-label="X">𝕏</a>
+      <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+      <a href="#" title="Facebook" aria-label="Facebook">f</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">Fuel for Bobcats 🐾</div>
+      <h1>ENERGY MADE FOR <span class="gold">GAME DAY</span> AND EVERY DAY</h1>
+      <p>Born in San Marcos, built for students. Clean energy drinks and gummies to power through lectures, late nights, and everything in between.</p>
+      <div class="btn-row">
+        <a href="#products" class="btn btn-gold">Shop Products</a>
+        <a href="#about" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="can-display">
+        <div class="can-sub">Premium Energy</div>
+        <div class="can-logo"><span class="can-go">Go</span>Boko</div>
+        <div class="can-tagline">⚡ EAT EM UP ⚡</div>
+        <div class="can-sub">San Marcos, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER AD -->
+  <div class="ad-banner">📢&ensp; YOUR ADVERTISEMENT COULD BE HERE — <a href="mailto:Go@Boko.com" style="color:var(--gold);text-decoration:underline;">Contact us for sponsorship</a> &ensp;📢</div>
+
+  <!-- COMMERCIAL VIDEO -->
+  <section id="commercial" class="section">
+    <div class="section-tag">Watch</div>
+    <div class="section-title">THE GOBOKO COMMERCIAL</div>
+    <p class="section-sub">See what the hype is all about.</p>
+
+    <div class="video-wrap">
+      <video controls playsinline preload="metadata" poster="">
+        <source src="goboko-commercial.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="section-tag">Products</div>
+    <div class="section-title">PICK YOUR FUEL</div>
+    <p class="section-sub">Whether you need a can to crush or a gummy to grab between classes — we've got you covered.</p>
+
+    <div class="products-grid">
+      <!-- ENERGY DRINK -->
+      <div class="product-card">
+        <div class="product-img drink">
+          <svg viewBox="0 0 220 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="canBody" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2a9ec5"/>
+                <stop offset="12%" stop-color="#4bbde8"/>
+                <stop offset="35%" stop-color="#6ad4f8"/>
+                <stop offset="50%" stop-color="#7adcfc"/>
+                <stop offset="65%" stop-color="#6ad4f8"/>
+                <stop offset="88%" stop-color="#4bbde8"/>
+                <stop offset="100%" stop-color="#2a9ec5"/>
+              </linearGradient>
+              <linearGradient id="metalRim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e8e8f0"/>
+                <stop offset="30%" stop-color="#c8c8d4"/>
+                <stop offset="70%" stop-color="#98989c"/>
+                <stop offset="100%" stop-color="#787880"/>
+              </linearGradient>
+              <linearGradient id="metalTab" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d0d0d8"/>
+                <stop offset="50%" stop-color="#a8a8b0"/>
+                <stop offset="100%" stop-color="#909098"/>
+              </linearGradient>
+              <linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="20%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="32%" stop-color="rgba(255,255,255,0.18)"/>
+                <stop offset="38%" stop-color="rgba(255,255,255,0.06)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <linearGradient id="edgeDark" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(0,0,0,0.25)"/>
+                <stop offset="8%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="92%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0.2)"/>
+              </linearGradient>
+              <filter id="pawGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="canShadow"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="rgba(0,0,20,0.5)"/></filter>
+            </defs>
+            <g filter="url(#canShadow)">
+              <path d="M50,56 L50,330 Q50,346 110,346 Q170,346 170,330 L170,56 Q170,42 110,42 Q50,42 50,56 Z" fill="url(#canBody)"/>
+              <ellipse cx="110" cy="336" rx="60" ry="12" fill="#2a8aaa" opacity="0.6"/>
+              <!-- Large yellow paw with navy outline -->
+              <g filter="url(#pawGlow)" transform="translate(110,178)">
+                <ellipse cx="0" cy="12" rx="42" ry="36" fill="none" stroke="#1a1a6c" stroke-width="5" opacity="0.7"/>
+                <ellipse cx="-34" cy="-24" rx="18" ry="22" fill="none" stroke="#1a1a6c" stroke-width="4" opacity="0.6"/>
+                <ellipse cx="-4" cy="-40" rx="16" ry="20" fill="none" stroke="#1a1a6c" stroke-width="4" opacity="0.6"/>
+                <ellipse cx="28" cy="-28" rx="18" ry="22" fill="none" stroke="#1a1a6c" stroke-width="4" opacity="0.6"/>
+                <ellipse cx="0" cy="12" rx="38" ry="32" fill="#f5f054"/>
+                <ellipse cx="-32" cy="-22" rx="16" ry="19" fill="#f5f054"/>
+                <ellipse cx="-3" cy="-38" rx="14" ry="17" fill="#f5f054"/>
+                <ellipse cx="26" cy="-26" rx="16" ry="19" fill="#f5f054"/>
+                <ellipse cx="2" cy="22" rx="24" ry="14" fill="rgba(200,180,0,0.25)"/>
+              </g>
+              <!-- Go Boko! text -->
+              <text x="78" y="118" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="#f5f054" font-weight="900" transform="rotate(-12, 78, 118)">Go</text>
+              <text x="108" y="112" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="#f5f054" font-weight="900" transform="rotate(5, 108, 112)">Boko!</text>
+              <text x="78" y="118" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="none" stroke="#1a1a6c" stroke-width="1.5" font-weight="900" transform="rotate(-12, 78, 118)">Go</text>
+              <text x="108" y="112" font-family="'Archivo Black',Impact,sans-serif" font-size="22" fill="none" stroke="#1a1a6c" stroke-width="1.5" font-weight="900" transform="rotate(5, 108, 112)">Boko!</text>
+              <!-- Small navy paw prints -->
+              <g fill="#1a1a6c" opacity="0.5">
+                <g transform="translate(62,280) scale(0.25)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+                <g transform="translate(158,270) scale(0.22)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+                <g transform="translate(152,96) scale(0.2)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+              </g>
+              <!-- Flavor text -->
+              <text x="110" y="268" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#f5f054" font-style="italic" font-weight="600">Boko's favorite</text>
+              <text x="110" y="290" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="18" fill="#f5f054" font-weight="900" letter-spacing="1">BLUERAS BLITZ</text>
+              <rect x="50" y="300" width="120" height="1.5" fill="rgba(255,255,255,0.25)"/>
+              <text x="110" y="318" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1.5">12 FL OZ (355mL)</text>
+              <!-- Highlights -->
+              <path d="M50,56 L50,330 Q50,346 110,346 Q170,346 170,330 L170,56 Q170,42 110,42 Q50,42 50,56 Z" fill="url(#spec)"/>
+              <path d="M50,56 L50,330 Q50,346 110,346 Q170,346 170,330 L170,56 Q170,42 110,42 Q50,42 50,56 Z" fill="url(#edgeDark)"/>
+              <!-- Top rim -->
+              <ellipse cx="110" cy="48" rx="60" ry="12" fill="url(#metalRim)"/>
+              <ellipse cx="110" cy="46" rx="56" ry="8.5" fill="#787880"/>
+              <ellipse cx="110" cy="45" rx="52" ry="7" fill="#606068"/>
+              <!-- Pull tab -->
+              <g transform="translate(110,44)">
+                <ellipse cx="0" cy="0" rx="18" ry="5.5" fill="url(#metalTab)" stroke="#70707a" stroke-width="0.5"/>
+                <ellipse cx="0" cy="-1" rx="12" ry="3" fill="none" stroke="#888" stroke-width="0.8"/>
+                <rect x="-3.5" y="-8" width="7" height="7" rx="2" fill="url(#metalTab)" stroke="#808088" stroke-width="0.5"/>
+              </g>
+              <ellipse cx="96" cy="46" rx="20" ry="3.5" fill="rgba(255,255,255,0.1)"/>
+            </g>
+          </svg>
+          <div class="prod-label">Best Seller</div>
+        </div>
+        <div class="product-body">
+          <h3>GoBoko Energy Drink</h3>
+          <p class="desc">Our flagship energy drink — a bold, crisp blend with natural caffeine, B-vitamins, and zero crash. Designed to keep Bobcats locked in from 8 AM lectures to late-night study sessions.</p>
+          <table class="price-table">
+            <thead>
+              <tr><th>Option</th><th>USD</th><th>EUR</th><th>MXN</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Single Can</td><td>$2.50</td><td>€2.30</td><td>$43.00</td></tr>
+              <tr><td>4‑Pack</td><td>$8.00</td><td>€7.40</td><td>$138.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ENERGY GUMMIES -->
+      <div class="product-card">
+        <div class="product-img gummy">
+          <svg viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="pouchBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#a8845a"/>
+                <stop offset="25%" stop-color="#c4a070"/>
+                <stop offset="50%" stop-color="#d4ae7a"/>
+                <stop offset="75%" stop-color="#c4a070"/>
+                <stop offset="100%" stop-color="#9a7a52"/>
+              </linearGradient>
+              <linearGradient id="labelSticker" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4bbcb0"/>
+                <stop offset="50%" stop-color="#3ca89c"/>
+                <stop offset="100%" stop-color="#348e84"/>
+              </linearGradient>
+              <linearGradient id="sealGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c4a070"/>
+                <stop offset="50%" stop-color="#b0905e"/>
+                <stop offset="100%" stop-color="#9a7a52"/>
+              </linearGradient>
+              <filter id="pouchShadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(0,0,20,0.4)"/></filter>
+              <filter id="pawGlow2"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <!-- Paper texture pattern -->
+              <pattern id="paperTex" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="rgba(0,0,0,0.03)"/>
+                <rect x="1" y="1" width="2" height="1" fill="rgba(0,0,0,0.02)"/>
+                <rect x="4" y="3" width="1" height="2" fill="rgba(0,0,0,0.02)"/>
+              </pattern>
+            </defs>
+            <g filter="url(#pouchShadow)">
+              <!-- Pouch body - kraft brown paper -->
+              <path d="M40,50 L40,280 Q40,308 70,310 L170,310 Q200,308 200,280 L200,50 Q200,38 190,35 L50,35 Q40,38 40,50 Z" fill="url(#pouchBody)" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+              <!-- Paper texture overlay -->
+              <path d="M40,50 L40,280 Q40,308 70,310 L170,310 Q200,308 200,280 L200,50 Q200,38 190,35 L50,35 Q40,38 40,50 Z" fill="url(#paperTex)"/>
+              <!-- Bottom gusset fold -->
+              <path d="M50,296 Q120,315 190,296" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1"/>
+              <!-- Zip-lock top -->
+              <rect x="40" y="35" width="160" height="20" rx="2" fill="url(#sealGrad)"/>
+              <line x1="45" y1="42" x2="195" y2="42" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
+              <line x1="45" y1="46" x2="195" y2="46" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+              <line x1="45" y1="50" x2="195" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <!-- Tear tab -->
+              <path d="M90,32 Q100,22 110,24 L130,24 Q140,22 150,32" fill="url(#sealGrad)" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+              <!-- Teal label sticker -->
+              <rect x="52" y="80" width="136" height="170" rx="8" fill="url(#labelSticker)"/>
+              <rect x="52" y="80" width="136" height="170" rx="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+              <!-- Yellow paw on label -->
+              <g filter="url(#pawGlow2)" transform="translate(120,145)">
+                <ellipse cx="0" cy="8" rx="28" ry="24" fill="#f5f054"/>
+                <ellipse cx="-24" cy="-14" rx="12" ry="15" fill="#f5f054"/>
+                <ellipse cx="-2" cy="-28" rx="11" ry="14" fill="#f5f054"/>
+                <ellipse cx="20" cy="-18" rx="12" ry="15" fill="#f5f054"/>
+                <ellipse cx="1" cy="16" rx="16" ry="9" fill="rgba(200,180,0,0.2)"/>
+              </g>
+              <!-- Small navy paw prints on label -->
+              <g fill="#1a1a6c" opacity="0.4">
+                <g transform="translate(68,100) scale(0.2)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+                <g transform="translate(172,104) scale(0.18)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+                <g transform="translate(168,230) scale(0.2)"><ellipse cx="0" cy="8" rx="16" ry="13"/><ellipse cx="-14" cy="-8" rx="7" ry="8"/><ellipse cx="0" cy="-14" rx="6" ry="7"/><ellipse cx="12" cy="-10" rx="7" ry="8"/></g>
+              </g>
+              <!-- Go Boko! text on label -->
+              <text x="90" y="108" font-family="'Archivo Black',Impact,sans-serif" font-size="18" fill="#f5f054" font-weight="900" transform="rotate(-8, 90, 108)">Go</text>
+              <text x="118" y="104" font-family="'Archivo Black',Impact,sans-serif" font-size="18" fill="#f5f054" font-weight="900" transform="rotate(4, 118, 104)">Boko!</text>
+              <text x="90" y="108" font-family="'Archivo Black',Impact,sans-serif" font-size="18" fill="none" stroke="#1a1a6c" stroke-width="1" font-weight="900" transform="rotate(-8, 90, 108)">Go</text>
+              <text x="118" y="104" font-family="'Archivo Black',Impact,sans-serif" font-size="18" fill="none" stroke="#1a1a6c" stroke-width="1" font-weight="900" transform="rotate(4, 118, 104)">Boko!</text>
+              <!-- Flavor text on label -->
+              <text x="120" y="198" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#f5f054" font-weight="700">Enjoy Boko's NEW</text>
+              <text x="120" y="214" text-anchor="middle" font-family="'Archivo Black',Impact,sans-serif" font-size="14" fill="#f5f054" font-weight="900" letter-spacing="0.5">Blueras Blitz Gummies!</text>
+              <text x="120" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="rgba(255,255,255,0.8)" font-weight="600">With 50mg caffeine per gummy!</text>
+              <!-- Net weight below label -->
+              <text x="120" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="rgba(80,60,30,0.6)" letter-spacing="1">30 GUMMIES · 150mg CAFFEINE</text>
+              <!-- Paper fold lines for realism -->
+              <line x1="80" y1="60" x2="82" y2="300" stroke="rgba(0,0,0,0.04)" stroke-width="0.5"/>
+              <line x1="160" y1="58" x2="158" y2="298" stroke="rgba(0,0,0,0.04)" stroke-width="0.5"/>
+              <!-- Edge highlights -->
+              <path d="M40,50 L40,280 Q40,308 70,310" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+              <path d="M200,50 L200,280 Q200,308 170,310" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+            </g>
+          </svg>
+          <div class="prod-label">New</div>
+        </div>
+        <div class="product-body">
+          <h3>GoBoko Energy Gummies</h3>
+          <p class="desc">Can't finish a full drink? No problem. Our energy gummies pack the same boost into a sweet, chewable form. Toss a pack in your bag for on-the-go energy between classes and workouts.</p>
+          <table class="price-table">
+            <thead>
+              <tr><th>Option</th><th>USD</th><th>EUR</th><th>MXN</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Single Pack</td><td>$1.50</td><td>€1.38</td><td>$26.00</td></tr>
+              <tr><td>4‑Pack</td><td>$5.00</td><td>€4.60</td><td>$86.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="section">
+    <div class="section-tag">Reviews</div>
+    <div class="section-title">WHAT BOBCATS ARE SAYING</div>
+    <p class="section-sub">Don't just take our word for it — hear from the students who fuel up with GoBoko.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>My favorite drink of all time! So flavorful and a great energy boost!</blockquote>
+        <div class="attribution"><span>Joshua Tree</span> — San Marcos, TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>I have trouble finishing energy drinks, so the gummy options at GoBoko are amazing. They are sweet, flavorful, and energizing. GoBoko has gotten me through all of my midterms!</blockquote>
+        <div class="attribution"><span>Samantha D.</span> — San Marcos, TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="quote-mark">"</div>
+        <blockquote>From one Texas State student to another, trust me when I say GoBoko is the real deal. A variety of energy drinks that make for a great study buddy on pre-test nights. Go Boko!</blockquote>
+        <div class="attribution"><span>Bradley Sharpe</span> — San Marcos, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section id="about" class="section">
+    <div class="section-tag">About Us</div>
+    <div class="section-title">BORN IN BOBCAT COUNTRY</div>
+
+    <div class="about-content">
+      <div class="about-text">
+        <p>GoBoko was founded by a group of Texas State University students who were tired of the same old energy drinks that left them crashing before their next class. We wanted something better — something made for the student grind.</p>
+        <p>Named after the Bobcat battle cry, GoBoko is more than a brand. It's a rallying call for every student pulling late nights at Alkek, grinding through group projects, and showing up on game day. Our products are crafted to deliver clean, sustained energy without the sugar crash.</p>
+        <p>Based right here in San Marcos, Texas, we're proud to be built by Bobcats, for Bobcats — and for anyone who needs that extra push to get through the day.</p>
+      </div>
+      <div>
+        <div class="section-tag" style="margin-bottom:16px;">The Team</div>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar"><img src="data:image/jpeg;base64,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" alt="Mackenzie" style="width:100%;height:100%;object-fit:cover;"></div>
+            <h4>Mackenzie C.</h4>
+            <div class="role">President</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="data:image/jpeg;base64,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" alt="Javin" style="width:100%;height:100%;object-fit:cover;"></div>
+            <h4>Javin I.</h4>
+            <div class="role">VP of Marketing</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="data:image/jpeg;base64,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" alt="Galina" style="width:100%;height:100%;object-fit:cover;"></div>
+            <h4>Galina O.</h4>
+            <div class="role">VP of Outreach</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCACWAJYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDiMUmKfijHvWJoRnNIaeRTTQAsf+uj/wB4VMv/ACEl/wCuoqKIfvk/3hUvI1FT381f5igCe9VG1GNHGUZTGw9cjP8AhRdQst/C4jzGyqu70xxir8tss1yWIG7qPqK0EjjhjCksZSM/KATmoa7jSuZ7aLcSSW1yQyiNNp+XrmnTaTNNNBLG5VoWJO5cEg9qdNLLnFs05fuxl6fl/hRFqd1ahVu54tw4U7wSxPrxii7L5UXYZBGjxxbHkHDncDt/CqNzakP8yGNsZ5HFUtSNwzCeCKRHLAs+cfX9K1oLxJED3aMocZCscDHYU9VqFrmWYZMkBGP0WkiiDybWZUGcEvkAVo3l47RloZVKR5byN2zIHXBHemsr3dv5jAbdoaORjlsHsT3H1pqQnEoToqTMqEMoOAQcg1HjnFPKsJMMoGOvNNxVEjCMtikUZzTsdTTEY71G3g980ATAbkFFJGflI2twfSigCng0mKcRSYpCG0hx6U7BFFACRYEyf7wqzGAdQLEE4YYA6k8VBGP3iH/aFXoPMjumZB8rNgk+woYJXNkMfNXMJjO0sQ4HyjPU+59KrarqMcVs6KXEgXk7cfyqG7v5Idy+WfMcqBz91QOM1gyXnn+Zl2IH3/lqLXNS41+lnB5LoGY4+YHjFRw6l9pJQiMg/wCz0x6e/vVaOCeVhKIyWC4AI5Hoarrb3NlP5kinYx5JHQnvmqVhNM6FdZs4oiux5gRtbOWB/CoHv7OTKjckijhGbeMexPP4VnwT7IGlWQIWOMYP4nis+4ImvQgkmldRjnBP+NCQrmk/2prgNE+d8ZUDPzYPT+tbGn3KBlgkkYKFIAboPTB9fasrT3kWJ5AYXx8rCckEdvwrQuH2qJXtWZkUExLzkexoY0TE273TxTRTEqQW2AE89KS7hijbMEgZPTOSKZbXFnJtfa8cmd2M5Bz1yByKmurYRoGCFe/qCD3FJPUTRRchY8k4qIBRg4T86llzwM49qa33F+9+K1ZJIuVdsA/g1FNYqTnK9O/FFAEAwwzijbzxUpWmgEikIiIPrSY71Jg0h6UAIn+sT/eFaM97BbwIiArOgLsfvDB7+1UE++n+8Kddx/6RvjAJMREgz2zxQxx3EvNQjnh8td24ndnP5VPpGgm4xK0hCk7iOma5xo3WZmjI2jAxjNelaRCUs4QcDCDJqXoawV2RNYi2tsRpj1IHNYupS+ZamALhD992XGP8TXT3N/Zw5R5RnFc5d21veMxgv0wf4cipNWc55DGIDPyjnbVU6cfOWVuGyDnpzXSLpb5GVUD/AGT1ou9LlmVRGQCDkVaZHIZ0aP5wVh87qenensl7YCJknDbVwQSRgdRj1rYsNGuhJ5sq7nxhTwFX39am8SWqxaSWhUZhA/EdKQuU5iK9kku1LBTh8qcdu4+lbcNwd/lfciIb5f8APauXsZcSEk/ePy57V0FmpfDbW3Opbn06frTsZ3Bxk0SKdidf++qcwy/SnzxoAPlFUSRDJAyX/EZop6RgjjI/GigBhqMMp6GpSKbtHpSJIyeetNK+9ObOelIeuKAFVQHX1DD+dW3tA7zSRrmQhUCg9dzAVURSGXJycjnHvWnZZ/tkJyfMBXA65xkfqKHsXSa5lcpHQc3YiRlLBhyrZ4zXYTxyRWQSPG7GKr2NkthkOA8smG3kc4HQe1aLDzE+lZNnU4pPQ4y+iuhuMluJf9kOo/nz/KslICs8bm1aJnOAOp/Su2u7OOUfMu761Vt9IiE29cg/U1aaJcHcZb2zGFSrZJHesTUNSnimaKBiHBwMc12CQeUVTPSuXv8ASWe5Mvlqykc5JFJblSvbQWw13VYWQXKIVP4E/nWpq832rSJnAwSvIFZVhob5KIXjjY5KtIXU/gen4Vp6jZPFo0lvGSztgDA5602Qr21OFtI83ccYQseg9ia7iymt4kVJogTj/WbuR+FY9tpn2WaTzgTPEy5IPAyK0RHFN8vEb44Jb5T+dWjGSa0ZVYL55IHGelNuT83RwPpU0cbBwdufQZqGQZk5GCAf4qCRImx1bI+nSinqGQDBkB/CimBCBuUEMCCKTbyOTTbN4pIAI127eGX0NSkc+9IkjYd80zpmpGB9KYfpQAgOGH1FWJ5WgvhIjbJFIZT6GqpPI9iKz/FcEryiePpCMn1BPQ00rivY7S21C7uLy0VmTy3Uswxg9O1aM9z9nTryaw/Db/abWwmznMDHJ5PetK6AkkUnkVlNWZ105OSuytNqgUcj8Kli1NbeJprnMcYHBArFnka3vg0qHyc/fwSF9zjpVq61OPyV+zvC4PBGaSRXMa0Os2cuyXfhX6Uya8hyiDG1xuUj+Vc7LHK7+bcLG8JG0hGzxVq9jhWxiNoAsa4AUDBH+NVYfOdDZyRAZ4FRXwaa3lWMMXwCgXrkGsWynkdA3atmO/S3uSskRdQo5Hv2qbahzLczLklJiDsLnBkPq2AKhMkiBWVyCv3SD0qSRy8hbkZYtjZkCtBNRibTvsc9uhUfMjquCG9a1SsjlnLmlczrWTmV3JLsOpqrKyPIxOwEL0x1q7sXY7LjDHjjFUCD5nJf8qZIqD0A6dmopwGe4/FcUUARw2ItS7iYSFsDsMflT8E08oquygAYPamYx60hETgjpURyB0qcjIqJxgmgCHPJyO4pfEQ22l2f+mOaRxxmn+Jfl0+9b/pgB+tUhM0fBBzo9of7qSj/AMfNakpKybSeh4qj4Ntp4PDyyTwyRKzP5e9du5S2cgHt71fujzuHUVlU+I6qS9y45UVG3MuQR+lZs5htZS6KuwnlWTch/DtWhDcxsNrZAps0FtIeufoalOxaMOSK0ueI47aJyT86Fs/lVk6JEbb57i4kUc7Wf5QfpV6PTIid6ttx/ep00ipGYkOfeqbE7Fa2WNFEa/dHJqUqWZmJb5ucZ6UiQGIZIwSM4NO3HPOzH1q4R6mFSXQi8v8A2m/76qOVcHGSc+pqYEn+JMUjIWlA71RmOZdlsoqjlTLjIrRuvlUD0rOAHmsRjj1WgCT8aKFC9tufaigZEeXfP94/zppRfSn/AMb/AO8f5mmmpEQscE1CWz6dandcmq5BBJxwO+aYhrkYNdVoWjxa94lSGZRJaW8ayzr1UkH5VP1POPQVyz4iUtJ1xwp6123wruwya1ET+882N898FSP6VqqbtdkuWos8s7yXhuFZJvtMgZW6gA4H4Y5H1rLlJJxmu313Sjfj7TbYW6UYKk4EoHY+h9DXESqVdlZWV1OCrDBU+hrmnFp6ndTmpxKM9vJy0bEGs6S9uIX2tnIrbd/lHHI71C0auMlAaSE4mZDfXEp4ZifYZrWs4JDh5zk9hSQKqnhAB64q2pznAOTTY4x7hIfnYnoOKi4B6/8Ajta2uwpbakkAIEzW0cjoOuehP6VmPkA8NzwOcVtaxyN3dyMA+p6/3KdCu+4B7UbSOz/99VNaKd5PpTAiuz8xrPRW8xj8+frmrt2Rkjj05qsijLfc/UUgHAeuT9aKeBx2/CigRSJO5+M/O38zRgsOASfQU2S5hTLBeSSQDVGfUmZSqnHqRWioPqQ59i22F3b3Vcdec4qhLdqOI8gHuev/ANaqlxcuYwkYBwckMeDVUXsZfbMpic9j0/A1sqcUQ5NlliuCc/nXQ/DnUxaeJ54ScLcw459VOR/M1yk0oYbU+73J70/TbkWGqWt2SQI5VLH/AGc4P6VT1Qkz6BaTcMg1m6jplvqS/vB5c4GFlUc/Q+oqzbo6IGB3qRkGpiA3qKwaT0ZopNO6OBvrC4sJvKnTGfusPut9D/SqDocjBr0uW1iu4jBcRiSNux7fT3rjrnS7Rpp/sOpWzwwnDtNJsCH03dG/CsZUmtjqjWT+IykGBzXVaForLIl1drjGDHEeufVv8KtaLoFtDGl2JY7uQ8rKhBQf7v8Aj1rd2rCORljVQp21ZFStfSJ5x8VYXtL3SNVjfbKyvCfwO4fzNZ+n3yX9ssu1VcD5l967Dx3pkmq+HCojDyo29MjkfSvI9LnnsrkqdysvDITituXm0Oe9jt2UAHPl9Kt2i4hLVjR6o2wNJh0Izu6f5NatpfW89swjcb8fdPWodNopSTKs3MnGevUUyIHGTu5PepCoZ8kUIiqowBUFBiihmwcYP4CigDjHlY96hZ+ahD570ua7DnFaUKpJzULSGRhxSzZ2bvQ00dMjHtSAfQACMHkU3NLnmmB7N4A1L7V4atYpHLmMGLLHJBU/dz9MEe1dXL5UMZkd1VB1LGvJvh1qv2W5u7FjlJNsyA/3hwcfpXorLDdybpJSz9lk4A+lYy0ZotTD8S6ldXts1pp4lhgf5ZJlGHYdwvpXml7p1xpMvlXEbtBy0TOc/wD1s17FNackEYHasLxba2j6BKZvvhd8ZA5Ddv1ojowexyeka1d6DGtzp+8ZwWtGPyyg+3Y+h6163pF7ba3YxX1sxKOPmRvvI3dSPUV494Wt1h12xkkJaEy7WU44YjAJ44616hZ2DWkjT2TmGbPzDHyyf7w/rVT3FHY19UtvNg8vttNeIeJNPfTtZ8zGFc4P1r29Z5LiJXliMb4wy5yM1598QLISWEkyjDIN2fpUrTUq2hw/JRk3EBuoB601ZJIWBRiMfpUCykxqwPJFNExZtrjDdiOhrcyNu11g5Czc+4NbEE8U8f7t8+2ea4cy7XPsaljvXiYMrEEdwaiUEylJo7En6fkaKw7XXFIxcMfZhRWDg0zRSRzO4gU9XyKKK6DIkJyuKij4LJ/d6fSiigQ+kFFFMDS0CdoNesipI3yCM/RuK9jsttwvlSD5scMKKKzmaRLPmSWzeW5EiehrlPHM4NnaQAcNKWOfQD/69FFTHcJbHBQ3Jiu1uEGGjYE/nx/KvatPvPtVlDchceagfB7ZFFFaT3JgaRfKgYrl/FkKy6ZMp7o38qKKzLPHIGzbqaYzGiitjNkTMcmoWc5oopCEDknGTRRRUlH/2Q==" alt="Harrison" style="width:100%;height:100%;object-fit:cover;"></div>
+            <h4>Harrison C.</h4>
+            <div class="role">VP of Technology</div>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar"><img src="data:image/jpeg;base64,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" alt="Sofia" style="width:100%;height:100%;object-fit:cover;"></div>
+            <h4>Sofia C.</h4>
+            <div class="role">VP of Products</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="section-tag">FAQ</div>
+    <div class="section-title">FREQUENTLY ASKED QUESTIONS</div>
+    <p class="section-sub">Everything you need to know about GoBoko products.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What flavors do GoBoko energy drinks come in?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Our energy drinks come in a signature GoBoko blend with a bold, crisp flavor. We're always experimenting with new flavors — follow us on social media to be the first to know about new drops.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How much caffeine is in a GoBoko drink?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Each GoBoko energy drink contains a moderate amount of caffeine comparable to other leading energy drinks, balanced with B-vitamins for smooth, sustained energy without the jitters.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Where can I buy GoBoko products?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">GoBoko products are available on our website and at select locations around the Texas State campus in San Marcos, TX. We're expanding to more locations soon!</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Are GoBoko gummies a good alternative to the drinks?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely! Our energy gummies deliver the same clean energy boost in a convenient, chewable form. They're perfect for people who prefer not to drink a full can or want something quick between classes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you ship internationally?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Currently, we ship within the United States. International shipping is on our roadmap — check back soon for updates. We list prices in USD, EUR, and MXN for our international community.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What is your return or refund policy?<span class="chevron">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">If you're not satisfied with your order, contact us within 30 days of purchase at Go@Boko.com. We'll work with you to make it right — whether that's a replacement or a refund.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="section-tag">Contact Us</div>
+    <div class="section-title">GET IN TOUCH</div>
+    <p class="section-sub">Have a question, partnership idea, or just want to say hey? We'd love to hear from you.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p>Go@Boko.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Mailing Address</h4>
+            <p>GoBoko Energy Co.<br>601 University Dr<br>San Marcos, TX 78666</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>(512) 555-BOKO</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon – Fri: 9 AM – 5 PM CT</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); handleSubmit();">
+        <input type="text" id="cf-fname" placeholder="First Name" required>
+        <input type="text" id="cf-lname" placeholder="Last Name" required>
+        <input type="email" id="cf-email" placeholder="Email Address" required>
+        <textarea id="cf-msg" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-gold" id="cf-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- POLICIES -->
+  <div class="policies">
+    <div class="policy-card">
+      <h3>🔒 Security Policy</h3>
+      <p>GoBoko is committed to protecting our customers' information. We use industry-standard encryption for all transactions and data storage. Your payment information is never stored on our servers and is processed through secure, PCI-compliant payment providers. We conduct regular security audits to ensure the safety of our systems.</p>
+    </div>
+    <div class="policy-card">
+      <h3>🛡️ Privacy Policy</h3>
+      <p>Your privacy matters to us. GoBoko collects only the information necessary to fulfill orders and improve your experience. We do not sell, trade, or share your personal information with third parties for marketing purposes. You may request to view, modify, or delete your personal data at any time by contacting us at Go@Boko.com.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2026 GoBoko Energy Co. &middot; San Marcos, TX</span>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="webmaster">
+      Technical issues? Email <a href="mailto:webmaster@goboko.com">webmaster@goboko.com</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      // close all
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        o.querySelector('.faq-a').style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Contact form mock submit
+  function handleSubmit() {
+    const btn = document.getElementById('cf-btn');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      document.querySelector('.contact-form').reset();
+    }, 2500);
+  }
+</script>
